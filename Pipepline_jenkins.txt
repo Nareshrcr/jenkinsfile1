@@ -1,0 +1,70 @@
+What are all the plugins in jenkins you have worked on ?
+How to run a job parallely 
+	- we can run free style job parallely by using "Execute concurrent builds" in general section 
+	
+	Pipeline 
+	- By default pipeline job runs concurrently.
+	- To run stages parallely we need to define the stages inside parallel block.
+
+Groovy 
+
+Type of pipeline job in jenkins
+
+scripted pipeline 
+	- Traditional way of writing groovy script 
+	- most of the options or configuration should be done manually.
+	- Most of the time we use inline block to write scripted pipeline.
+	- All the code is defined inside node block
+		
+		node { 
+		
+		}
+		
+declarative pipeline
+	- New way of writing groovy declaratives 
+	- most of the options are predefined in declarative pipeline 
+	- we always write in a file called Jenkinsfile which is chechedin a SCM (git)
+	- all the code is defined inside pipeline block 
+	- The mandatory components of pipeline will be agent, stages, stage, steps
+	
+		pipeline {
+
+
+		}	
+		
+		
+How to define a pipeline job in jenkins
+	1. We can add pipeline configuration in 2 ways 
+		a. We write all the configuration inside the pipeline job in job ui only.
+		b. We can write all the configuration in a file called Jenkinsfile and we can add that 
+		   from a SCM/Version control 
+	2. We are using only declarative pipeline type in our company.
+	
+Jenkinsfile	
+	- It is the file in which we write all our job configuration in groovy.
+	- In our company we are using declarative piepline in Jenkinsfile and we are maintaining 
+	  Jenkinsfile through git.	
+
+Agent
+	- An agent is a declarative used to defince the execution method for piepline stages.
+	- agent is the one which tell stages to execute on which node and its executro.
+	- Agent can be specified at two levels 
+				a. pipeline level 
+				b. Stage level
+		
+	Types of agent 
+		any 
+			- This is the default agent, If I wont specify any agent this will be considered.
+			- Runs the pipeline stages on any available node executor.
+			
+		none 
+			-  To define executor for each and every stage declare agent as none at pipeline level.
+			-  Using this we specify jenkins that agent is controlled at each stage level.
+			-  Devining agent at stage level is mandatory. 
+				
+		label 
+			- we can define agent as label at pipeline to run all the stages of pipeline
+			  on a perticular node with label.
+			  
+		docker 
+			
